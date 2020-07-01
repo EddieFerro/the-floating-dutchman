@@ -81,6 +81,7 @@ class GameManager(Manager):
         self._room_manager.spawn(self._level)
         self._map.spawn(self._room_manager)
 
+
     def update(self):
         self._player_manager.update(
             self._screen, self._room_manager.get_current_enemies())
@@ -97,6 +98,8 @@ class GameManager(Manager):
         self._screen.blit(self._background, self._background.get_rect())
         self._screen.blit(self._background, self._background.get_rect())
         ui.health_bar(self._screen, self._player_manager)
+        ui.level(self._screen, self._level)
+
         self._player_manager.draw(self._screen)
         self._room_manager.draw(self._screen)
         display.flip()

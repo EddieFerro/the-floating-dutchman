@@ -167,7 +167,11 @@ def health_bar(screen, playermanager):
     temp1 = pygame.draw.rect(screen, WHITE, (WINDOW_WIDTH/2 - 150, 97.5, 300, 50))
     temp2 = pygame.draw.rect(screen, GREEN, (WINDOW_WIDTH/2 - 140, 100, 280 * (current_hp/100), 45))
 
-
+def level(screen, level):
+    surface = new_screen_helper(
+        WINDOW_WIDTH, WINDOW_HEIGHT, 100, "LEVEL "+str(level), WHITE, None)
+    screen.blit(surface, ((WINDOW_WIDTH - surface.get_width()) / 2,
+                          -WINDOW_HEIGHT/3))
 
 def spawn_tutorial(screen, text):
     for txt, height, sleep_time, color, text_size in text:
