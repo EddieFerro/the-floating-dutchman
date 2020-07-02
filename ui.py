@@ -169,7 +169,7 @@ def health_bar(screen, playermanager):
 
 def level(screen, level):
     surface = new_screen_helper(
-        WINDOW_WIDTH, WINDOW_HEIGHT, 100, "LEVEL "+str(level), WHITE, None)
+        WINDOW_WIDTH, WINDOW_HEIGHT, 100, "LEVEL "+ str(level), WHITE, None)
     screen.blit(surface, ((WINDOW_WIDTH - surface.get_width()) / 2,
                           -WINDOW_HEIGHT/3))
 
