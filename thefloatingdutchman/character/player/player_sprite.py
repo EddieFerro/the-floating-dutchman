@@ -40,14 +40,14 @@ class PlayerSprite(CharacterSprite):
 
     # simple player movement
 
-    def update(self, screen):
+    def update(self, screen, placeholder):
         if(self._data.health <= 0):
             self._dead = True
             self.kill
-        self._calc_movement(screen)
+        self._calc_movement(screen, placeholder)
         self._bullets.update()
 
-    def _calc_movement(self, screen):
+    def _calc_movement(self, screen,placeholder):
         x = 0
         y = 0
         buttons = mouse.get_pressed()
@@ -90,7 +90,7 @@ class PlayerSprite(CharacterSprite):
     def _calc_rotation(self):
         mouse_x, mouse_y = mouse.get_pos()
         rel_x, rel_y = mouse_x - self._data.pos.x, mouse_y - self._data.pos.y
-        self._angle = (180 / math.pi) * -math.atan2(rel_y, rel_x) + 5
+        self._angle = (180 / math.pi) * -math.atan2(rel_y, rel_x)
         self.image = transform.rotate(self._original_image, int(self._angle))
         self.rect = self.image.get_rect(center=self._data.pos)
         self.rect.center = self._data.pos

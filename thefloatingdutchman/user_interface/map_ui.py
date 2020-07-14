@@ -1,7 +1,7 @@
 from typing import List, Tuple
 from math import sqrt, atan, degrees
 
-from pygame import sprite, Surface, mouse, K_m, event, display, transform, KEYDOWN, MOUSEBUTTONDOWN, QUIT
+from pygame import sprite, Surface, mouse, K_m, event, display, transform, KEYDOWN, MOUSEBUTTONDOWN, QUIT, transform
 from pygame.math import Vector2
 
 from thefloatingdutchman.level.room.room import Room
@@ -67,8 +67,8 @@ class MapUI:
         for i, room_per_row in enumerate(room_manager.rooms_per_row):
             for j in range(room_per_row):
                 temp_dot = RoomMarkerUI(
-                    (WINDOW_WIDTH*(i+1))/(num_rows+1),
-                    WINDOW_HEIGHT*(j+1)/(room_per_row+1),
+                    ((display.Info().current_w)*(i+1))/(num_rows+1),
+                    (display.Info().current_h)*(j+1)/(room_per_row+1),
                     25
                 )
                 # double memory overhead, big oof
@@ -93,15 +93,18 @@ class MapUI:
                rooms: List[Room],
                moveable_rooms: List[int],
                current_room_id: int,
-               set_current_room) -> bool:
+               set_current_room,
+               placeholder
+               ) -> bool:
 
         while True:
             for dot, room in zip(self._dots, rooms):
                 self._fill_shape(dot, room, moveable_rooms, current_room_id)
 
-            screen.fill(BLACK)
-            self._paths.draw(screen)
-            self._dots.draw(screen)
+            placeholder.fill(BLACK)
+            self._paths.draw(placeholder)
+            self._dots.draw(placeholder)
+
             display.flip()
 
             for e in event.get():
