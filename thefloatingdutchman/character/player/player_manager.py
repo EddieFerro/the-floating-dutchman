@@ -22,19 +22,20 @@ class PlayerManager(Manager):
 
     def update(self, screen, enemies: sprite.Group()):
         self._player.update(screen)
-        for enemy in enemies:
-            hits = sprite.spritecollide(
-                self._player, enemy.bullets, True, sprite.collide_mask)
-            for bullet in hits:
-                if bullet._data.type5:
-                    draw.circle(screen, RED, (bullet.rect.x,
-                                              bullet.rect.y), 100, 100)
-                    display.flip()
-                    display.update()
-                    display.flip()
-                    display.update()
-                self._player.take_damage(enemy._damage)
-                bullet.kill()
+        if enemies:
+            for enemy in enemies:
+                hits = sprite.spritecollide(
+                    self._player, enemy.bullets, True, sprite.collide_mask)
+                for bullet in hits:
+                    if bullet._data.type5:
+                        draw.circle(screen, RED, (bullet.rect.x,
+                                                  bullet.rect.y), 100, 100)
+                        display.flip()
+                        display.update()
+                        display.flip()
+                        display.update()
+                    self._player.take_damage(enemy._damage)
+                    bullet.kill()
 
     @property
     def player(self):

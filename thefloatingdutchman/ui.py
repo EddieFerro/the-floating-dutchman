@@ -190,6 +190,19 @@ class LevelSurface(Screen):
     def update_screen_level(self, screen):
         screen.blit(self._level_surface, ((WINDOW_WIDTH - self._level_surface.get_width()) / 2, -WINDOW_HEIGHT/3))
 
+class TreasureSurface(Screen):
+
+
+    # drawing surface to screen
+    def update_treasure_screen(self, screen):
+        self._treasure_surface = self._draw_surface(
+            WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 20), "Congratulations!", YELLOW,
+            None)
+        screen.blit(self._treasure_surface, ((WINDOW_WIDTH - self._treasure_surface.get_width()) / 2, -WINDOW_HEIGHT/4))
+
+
+
+
 
 class Tutorial(Screen):
     # initialize surface elements and background image

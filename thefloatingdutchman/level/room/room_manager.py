@@ -42,6 +42,7 @@ class RoomManager(Manager):
         return [v2 for v1, v2 in edges]
 
     def is_room_cleared(self) -> bool:
+
         return self._rooms[self._current_room_id].cleared()
 
     def is_level_cleared(self) -> bool:
@@ -66,3 +67,9 @@ class RoomManager(Manager):
         return self._map_ui.render(screen, self._rooms,
                                    self.get_available_rooms(),
                                    self._current_room_id, self.set_current_room)
+
+    def get_proximity(self) -> bool:
+        return self._rooms[self._current_room_id].get_proximity()
+    def set_cleared(self):
+        self._rooms[self._current_room_id].set_cleared()
+

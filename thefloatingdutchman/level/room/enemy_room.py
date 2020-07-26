@@ -23,6 +23,9 @@ class EnemyRoom(Room):
     def get_enemies(self):
         return self._enemy_manager._enemies
 
+    def get_proximity(self):
+        return False
+
     def cleared(self) -> bool:
         return not self._enemy_manager.get_enemy_count()
 

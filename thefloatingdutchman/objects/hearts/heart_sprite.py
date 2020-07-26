@@ -19,10 +19,12 @@ class HeartSprite(ObjectSprite):
         sprite_sheet = image.load(os.path.join(os.path.dirname(
             os.path.realpath(__file__)), "Heart.png")).convert_alpha()
         temp_rect = Rect((0, 0, 254, 254))
+        scale = 0.3
+
         self._original_image = pygame.Surface(temp_rect.size, pygame.SRCALPHA)
         self._original_image.blit(sprite_sheet, (0, 0), temp_rect)
         self._original_image = transform.scale(
-            self._original_image, (int(70), int(70)))
+            self._original_image, (int(254*scale), int(254*scale)))
 
     def update(self):
         self.rect.center = self._data.pos

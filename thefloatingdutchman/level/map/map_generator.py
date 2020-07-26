@@ -3,10 +3,15 @@ from random import randint, choices
 from ordered_set import OrderedSet
 
 from networkx import DiGraph
+import random
 
 from thefloatingdutchman.level.room.room import Room
 from thefloatingdutchman.level.room.enemy_room import EnemyRoom
 from thefloatingdutchman.character.enemy.enemy_manager import EnemyManager
+
+
+from thefloatingdutchman.level.room.treasure_room  import TreasureRoom
+from thefloatingdutchman.objects.treasure_manager import TreasureManager
 from thefloatingdutchman.character.enemy.boss.boss_manager import BossManager
 
 
@@ -46,7 +51,13 @@ class MapGenerator:
         rooms = []
 
         for i in range(0, num_rooms-1):
-            rooms.append(EnemyRoom(EnemyManager()))
+            roomChooser = random.choices([1, 2], weights=[0.9, 0.1], k=1)[0]
+
+            if roomChooser == 1:
+                rooms.append(EnemyRoom(EnemyManager()))
+            else:
+                rooms.append(TreasureRoom(TreasureManager()))
+
 
         rooms.append(EnemyRoom(BossManager()))
         return rooms
