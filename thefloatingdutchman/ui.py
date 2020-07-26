@@ -194,9 +194,9 @@ class TreasureSurface(Screen):
 
 
     # drawing surface to screen
-    def update_treasure_screen(self, screen):
+    def update_treasure_screen(self, screen, txt):
         self._treasure_surface = self._draw_surface(
-            WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 20), "Congratulations!", YELLOW,
+            WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 20), txt, YELLOW,
             None)
         screen.blit(self._treasure_surface, ((WINDOW_WIDTH - self._treasure_surface.get_width()) / 2, -WINDOW_HEIGHT/4))
 

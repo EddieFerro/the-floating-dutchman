@@ -77,6 +77,6 @@ class TreasureManager(Manager):
     def draw(self, screen: Surface):
         self._hearts.draw(screen)
         if(self._proximity):
-            self._treasure.update_treasure_screen(screen)
+            self._treasure.update_treasure_screen(screen, "press e key")
 
     # ***** END HEARTS *****
