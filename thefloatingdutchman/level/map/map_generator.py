@@ -51,7 +51,7 @@ class MapGenerator:
         rooms = []
 
         for i in range(0, num_rooms-1):
-            roomChooser = random.choices([1, 2], weights=[0.9, 0.1], k=1)[0]
+            roomChooser = random.choices([1, 2], weights=[0.5, 0.5], k=1)[0]
 
             if roomChooser == 1:
                 rooms.append(EnemyRoom(EnemyManager()))

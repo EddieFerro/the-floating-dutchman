@@ -1,7 +1,7 @@
 import os
 import sys
 from pygame import display, event, time, K_m, K_x, K_e, QUIT, KEYDOWN, K_TAB, image, transform, Surface
-
+import random
 from thefloatingdutchman.character.player.player_manager import PlayerManager
 from thefloatingdutchman.manager import Manager
 from thefloatingdutchman.game_settings import WINDOW_WIDTH, WINDOW_HEIGHT, FPS
@@ -62,8 +62,16 @@ class GameManager(Manager):
                         for e in event.get():
                             if e.type == KEYDOWN:
                                 self._room_manager.set_cleared()
-                                enemyChooser = random.choices([1, 2, 3, 4, 5], weights=[
-                                    0.25, o.25, 0.25, 0.25, 0.25], k=1)[0]
+                                upgradeChooser = random.choices([1, 2, 3], weights=[
+                                    0.33,0.33, 0.33], k=1)[0]
+                                if upgradeChooser == 1:
+                                    self._player_manager._player._data._attack_speed += 5
+                                if upgradeChooser == 2:
+                                    self._player_manager.player._data._health += 5
+                                if upgradeChooser == 3:
+                                    self._player_manager.player._data._vel += 5
+
+
                                 self._items_dropped = True
                                 z=False
 
