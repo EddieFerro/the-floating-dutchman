@@ -105,3 +105,5 @@ class RoomManager(Manager):
         self._rooms[self._current_room_id].set_cleared()
     def  is_boss(self):
         return self._rooms[self._current_room_id].is_boss()
+    def  get_id(self):
+        return self._current_room_id

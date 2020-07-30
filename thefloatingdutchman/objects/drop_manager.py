@@ -43,10 +43,8 @@ class DropManager(Manager):
             dropChooser = random.choices([1, 2], weights=[
                 drop1Chance, drop2Chance], k=1)[0]
             if dropChooser == 1:
-                rand_pos_x: int = random.randint(40, WINDOW_WIDTH / 2 - 200) if bool(
-                    random.randint(0, 1)) else random.randint(WINDOW_WIDTH / 2 + 200, WINDOW_WIDTH - 60)
-                rand_pos_y: int = random.randint(40, WINDOW_HEIGHT / 2 - 100) if bool(
-                    random.randint(0, 1)) else random.randint(WINDOW_HEIGHT / 2 + 100, WINDOW_HEIGHT - 60)
+                rand_pos_x: int = random.randint(60, WINDOW_WIDTH / 2 - 200)
+                rand_pos_y: int = random.randint(60, WINDOW_HEIGHT / 2 - 100)
                 self._hearts.add(
                     HeartSprite(
                         self._res_container,
@@ -58,10 +56,8 @@ class DropManager(Manager):
                 )
             elif dropChooser == 2:
                 for i in range(2):
-                    rand_pos_x: int = random.randint(40, WINDOW_WIDTH / 2 - 200) if bool(
-                        random.randint(0, 1)) else random.randint(WINDOW_WIDTH / 2 + 200, WINDOW_WIDTH - 40)
-                    rand_pos_y: int = random.randint(40, WINDOW_HEIGHT / 2 - 100) if bool(
-                        random.randint(0, 1)) else random.randint(WINDOW_HEIGHT / 2 + 100, WINDOW_HEIGHT - 40)
+                    rand_pos_x: int = random.randint(60, WINDOW_WIDTH / 2 - 200)
+                    rand_pos_y: int = random.randint(60, WINDOW_HEIGHT / 2 - 100)
                     self._hearts.add(
                         HeartSprite(
                             self._res_container,
@@ -88,4 +84,7 @@ class DropManager(Manager):
 
     def draw(self, screen: Surface):
         self._hearts.draw(screen)
+
+    def clearHearts(self):
+        self._hearts.empty()
     # ***** END HEARTS *****

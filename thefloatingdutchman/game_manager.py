@@ -61,6 +61,7 @@ class GameManager(Manager):
                         WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
                     self._newRoom = True
                     self._items_dropped = False
+                    self._drop_manager.clearHearts()
                     time.wait(200)
                 elif e.type == KEYDOWN and e.key == K_e and self._room_manager.get_proximity():
                     self._screen.fill("BLACK")
@@ -95,6 +96,7 @@ class GameManager(Manager):
 
     # resets game
     def spawn(self):
+        self._drop_manager.clearHearts()
         self._level = 0
         self._done = False
         self._level_surface = ui.LevelSurface()
@@ -158,6 +160,7 @@ class GameManager(Manager):
                     WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
                 self._items_dropped = False
                 self._newRoom = True
+                self._drop_manager.clearHearts()
 
                 time.wait(200)
 
@@ -197,7 +200,12 @@ class GameManager(Manager):
                 dropCount =self._drop_manager.dropped_count()
                 if(self._room_manager.is_room_cleared()):
                     self._items_dropped = False
+                old_id = self._room_manager.get_id()
                 self._done = self._room_manager.render_map(self._screen, True, dropCount, False)
+                new_id = self._room_manager.get_id()
+                if old_id != new_id:
+                    self._drop_manager.clearHearts()
+
             elif result == 2:  # show game controls
                 self._tutorial.show_game_controls(self._screen)
             elif result == 3:  # restart game
