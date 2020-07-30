@@ -155,9 +155,9 @@ class MainMenu(Screen):
 
     def _initialize(self):
         self._background = image_fill_background(os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), "space_images/main_menu_background.jpg"))
+            os.path.dirname(os.path.realpath(__file__)), "utility/space_images/main_menu_background.jpg"))
         self._logo = pygame.image.load(os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), "logo.png"))
+            os.path.dirname(os.path.realpath(__file__)), "utility/logo.png"))
         self._logo = pygame.transform.scale(
             self._logo, (int(WINDOW_WIDTH / 2), int(WINDOW_HEIGHT / 10)))
 
@@ -221,7 +221,7 @@ class Tutorial(Screen):
         self._generate_story_elements()
         self._generate_game_controls_elements()
         self._background = image_fill_background(os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), "space_images/tutorial_background.jpg"))
+            os.path.dirname(os.path.realpath(__file__)), "utility/space_images/tutorial_background.jpg"))
 
     # initialize elements for story
     def _generate_story_elements(self):
@@ -239,7 +239,7 @@ class Tutorial(Screen):
         self._game_controls_surfaces.append(self._draw_surface(WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 14), "GAME CONTROLS", YELLOW, None))
         self._game_controls_surfaces.append(self._draw_surface(WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 15), "Press any Key to Continue", BLUE, None))
         self.game_controls_image = pygame.image.load(os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), "game_controls.png"))
+            os.path.dirname(os.path.realpath(__file__)), "utility/game_controls.png"))
         self.game_controls_image = pygame.transform.scale(
             self.game_controls_image, (int(WINDOW_WIDTH/2), int(WINDOW_HEIGHT/2)))
 
@@ -303,8 +303,8 @@ class GameCompletedScreen(Screen):
         self._initialize()
 
     def _initialize(self):
-        self._background = image_fill_background(os.path.join(os.path.dirname(os.path.realpath(__file__)), "space_images/main_menu_background.jpg"))
-        self._logo = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "logo.png"))
+        self._background = image_fill_background(os.path.join(os.path.dirname(os.path.realpath(__file__)), "utility/space_images/main_menu_background.jpg"))
+        self._logo = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "utility/logo.png"))
         self._surfaces = []
         features = [["CONGRATULATIONS!", LIME, None]]
         self._surfaces = self._gather_surfaces(self._surfaces, features, WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 10))
@@ -324,7 +324,7 @@ class CreditsScreen(Screen):
         self._initialize()
 
     def _initialize(self):
-        self._background = image_fill_background(os.path.join(os.path.dirname(os.path.realpath(__file__)), "space_images/main_menu_background.jpg"))
+        self._background = image_fill_background(os.path.join(os.path.dirname(os.path.realpath(__file__)), "utility/space_images/main_menu_background.jpg"))
         self._surfaces = []
         features = [["Thanks for Playing!", YELLOW, None], ["Developed By", YELLOW, None], ["Press any Key to Continue", YELLOW, None]]
         self._surfaces = self._gather_surfaces(self._surfaces, features, WINDOW_WIDTH, WINDOW_HEIGHT, (int)(min(WINDOW_HEIGHT, WINDOW_WIDTH) / 15))
@@ -341,9 +341,9 @@ class CreditsScreen(Screen):
 # health bar that shows player's health
 class HealthUI():
     def __init__(self):
-        self.full_heart = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "full_heart.png")).convert_alpha()
-        self.heart_outline = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "heart_outline.png")).convert_alpha()
-        self.half_heart = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "half_heart.png")).convert_alpha()
+        self.full_heart = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "utility/full_heart.png")).convert_alpha()
+        self.heart_outline = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "utility/heart_outline.png")).convert_alpha()
+        self.half_heart = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "utility/half_heart.png")).convert_alpha()
 
     def health_bar(self, screen, playermanager):
         current_hp = playermanager.player._data.health
