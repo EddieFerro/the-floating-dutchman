@@ -33,6 +33,11 @@ class DropManager(Manager):
     def dropped_count(self):
         return len(self._hearts.sprites())
 
+    #Add sprite groups to be despawned upon function call
+    def despawn_drops(self):
+        for sprites in self._hearts:
+            sprites.kill()
+
     # ***** HEARTS *****
     def _drop_hearts(self, level: int):
         self._hearts = sprite.Group()
@@ -45,6 +50,7 @@ class DropManager(Manager):
             if dropChooser == 1:
                 rand_pos_x: int = random.randint(60, WINDOW_WIDTH / 2 - 200)
                 rand_pos_y: int = random.randint(60, WINDOW_HEIGHT / 2 - 100)
+
                 self._hearts.add(
                     HeartSprite(
                         self._res_container,
@@ -67,6 +73,7 @@ class DropManager(Manager):
                             )
                         )
                     )
+
 
     def _heart_update(self, player: PlayerSprite, screen: Surface):
         self._hearts.update()
